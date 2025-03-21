@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avani Sales - About Us</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 80px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* About Us Content */
+        .about-content {
+            background-color: #fff;
+            padding: 60px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .mission-values {
+            background-color: #f0f5ff;
+            padding: 60px 0;
+        }
+
+        .mission-values h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: #0066cc;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .team h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: #0066cc;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #f0f5ff;
+        }
+
+        .team-member h3 {
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+        }
+
+        .team-member p {
+            color: #0066cc;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            margin: 0 8px;
+            color: #333;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #0066cc;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to right, #0066cc, #0088ee);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: white;
+            color: #0066cc;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #f0f5ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3,
+        .footer-links h3,
+        .footer-contact h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #0066cc;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .navbar {
+                position: relative;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                opacity: 0;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-text h2,
+            .mission-values h2,
+            .team h2,
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/api/placeholder/150/60" alt="Avani Sales Logo">
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#" class="active">About Us</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="animated">About Avani Sales</h1>
+            <p class="animated">Leading industrial products supplier with over 25 years of excellence in service.</p>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text animated">
+                    <h2>Our Story</h2>
+                    <p>Established in 1995, Avani Sales has grown from a small trading company to one of India's premier industrial products suppliers. With our headquarters in Ahmedabad, Gujarat, we've built a reputation for reliability, quality, and customer service excellence.</p>
+                    <p>Our team of skilled professionals works tirelessly to deliver the best solutions for businesses across various industrial sectors. We pride ourselves on understanding our clients' unique needs and providing tailored products and services that exceed expectations.</p>
+                    <p>Over the years, we've partnered with leading manufacturers and brands to ensure our customers receive only the finest quality products. Our commitment to innovation and continuous improvement has helped us stay ahead in this competitive industry.</p>
+                </div>
+                <div class="about-image animated">
+                    <img src="/api/placeholder/600/400" alt="Avani Sales Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Values Section -->
+    <section class="mission-values">
+        <div class="container">
+            <h2 class="animated">Our Values & Mission</h2>
+            <div class="values-grid">
+                <div class="value-card animated">
+                    <div class="value-icon">★</div>
+                    <h3>Quality Excellence</h3>
+                    <p>We are committed to providing only the highest quality products that meet international standards and exceed customer expectations.</p>
+                </div>
+                <div class="value-card animated">
+                    <div class="value-icon">♻</div>
+                    <h3>Integrity & Trust</h3>
+                    <p>We conduct our business with the utmost integrity, building trust with our customers, suppliers, and team members through transparent practices.</p>
+                </div>
+                <div class="value-card animated">
+                    <div class="value-icon">⚡</div>
+                    <h3>Innovation</h3>
+                    <p>We continuously seek new and better solutions, embracing technological advancements to improve our products and services.</p>
+                </div>
+                <div class="value-card animated">
+                    <div class="value-icon">🤝</div>
+                    <h3>Customer Focus</h3>
+                    <p>Our customers are at the heart of everything we do. We listen, understand, and deliver solutions tailored to their specific needs.</p>
+                </div>
+                <div class="value-card animated">
+                    <div class="value-icon">🔄</div>
+                    <h3>Sustainability</h3>
+                    <p>We are committed to environmentally responsible practices throughout our operations and supply chain.</p>
+                </div>
+                <div class="value-card animated">
+                    <div class="value-icon">🌏</div>
+                    <h3>Global Perspective</h3>
+                    <p>We maintain a global outlook, sourcing the best products worldwide while understanding local market needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2 class="animated">Our Leadership Team</h2>
+            <div class="team-grid">
+                <!-- <div class="team-member animated">
+                    <img src="/api/placeholder/200/200" alt="Team Member">
+                    <h3>Sunil Sharma</h3>
+                    <p>Operations Director</p>
+                    <div class="social-links">
+                        <a href="#">L</a>
+                        <a href="#">T</a>
+                        <a href="#">E</a>
+                    </div>
+                </div> -->
+                <div class="team-member animated">
+                    <img src="/api/placeholder/200/200" alt="Team Member">
+                    <h3>Amit Joshi</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <!-- <div class="team-member animated">
+                    <img src="/api/placeholder/200/200" alt="Team Member">
+                    <h3>Priya Desai</h3>
+                    <p>Sales Manager</p>
+                    <div class="social-links">
+                        <a href="#">L</a>
+                        <a href="#">T</a>
+                        <a href="#">E</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="animated">Ready to Partner With Us?</h2>
+            <p class="animated">Discover how Avani Sales can help your business with our premium industrial products and exceptional service.</p>
+            <a href="#" class="btn animated">Contact Us Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>About Avani Sales</h3>
+                    <p>Avani Sales is a leading supplier of industrial products with over 25 years of experience serving businesses across India with quality and reliability.</p>
+                    <div class="social-links">
+                        <a href="#">F</a>
+                        <a href="#">T</a>
+                        <a href="#">I</a>
+                        <a href="#">L</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Industrial Valves</a></li>
+                        <li><a href="#">Pumps & Systems</a></li>
+                        <li><a href="#">Safety Equipment</a></li>
+                        <li><a href="#">Electrical Products</a></li>
+                        <li><a href="#">Mechanical Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>📍 123 Industrial Area, Ahmedabad, Gujarat, India - 380015</p>
+                    <p>📞 +91 79 1234 5678</p>
+                    <p>📧 info@avanisales.in</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Avani Sales. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.navbar')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            // Scroll animation
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            function checkScroll() {
+                animatedElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Initial check
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            });
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // Initial check (for elements already in view)
+            checkScroll();
+        });
+    </script>
+</body>
+</html>
