@@ -3,629 +3,1183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avani Sales - About Us</title>
+    <title>Avani Sales - Refrigerant Gas Specialists</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Reset and Base Styles */
+        :root {
+            --primary: #00a0e3;
+            --secondary: #ff5722;
+            --dark: #0a2342;
+            --light: #f7f9fc;
+            --gray: #718096;
+            --success: #38b2ac;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
+            background-color: var(--light);
             color: #333;
             line-height: 1.6;
-            background-color: #f8f9fa;
         }
-
-        /* Header Styles */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+        
+        a {
+            text-decoration: none;
+            color: inherit;
         }
-
+        
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        .navbar {
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-info a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .main-header {
             padding: 15px 0;
         }
-
-        .logo {
+        
+        .main-header .container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
-
+        
+        .logo {
+            max-width: 150px;
+        }
+        
         .logo img {
-            max-height: 60px;
+            width: 100%;
+            height: auto;
         }
-
-        .nav-links {
+        
+        .nav-menu {
             display: flex;
-            list-style: none;
+            gap: 25px;
         }
-
-        .nav-links li {
-            margin-left: 25px;
-        }
-
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
+        
+        .nav-menu a {
             font-weight: 500;
-            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
         }
-
-        .nav-links a:hover {
-            color: #0066cc;
+        
+        .nav-menu a:hover {
+            color: var(--primary);
         }
-
-        .mobile-menu-btn {
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
             display: none;
+            font-size: 24px;
             cursor: pointer;
         }
-
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover;
+            background: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url('/api/placeholder/1200/500') no-repeat center center;
+            background-size: cover;
             color: white;
+            padding: 80px 0;
             text-align: center;
-            padding: 150px 20px 80px;
         }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
+        
+        .hero-content {
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
         }
-
-        /* About Us Content */
-        .about-content {
-            background-color: #fff;
-            padding: 60px 0;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-text h2 {
-            font-size: 2.2rem;
+        
+        .hero h1 {
+            font-size: 42px;
             margin-bottom: 20px;
-            color: #0066cc;
+            font-weight: 700;
         }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
-
-        .mission-values {
-            background-color: #f0f5ff;
-            padding: 60px 0;
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-
-        .mission-values h2 {
+        
+        .btn:hover {
+            background-color: #0088c7;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 160, 227, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e64a19;
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
+        }
+        
+        /* Products Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
             text-align: center;
             margin-bottom: 50px;
-            font-size: 2.2rem;
-            color: #0066cc;
         }
-
-        .values-grid {
+        
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
-
-        .value-card {
+        
+        .product-card {
             background-color: white;
-            padding: 30px;
-            border-radius: 8px;
+            border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
         }
-
-        .value-card:hover {
+        
+        .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .value-icon {
-            font-size: 2.5rem;
-            color: #0066cc;
-            margin-bottom: 20px;
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
         }
-
-        .value-card h3 {
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: var(--dark);
+        }
+        
+        .product-info p {
+            color: var(--gray);
+            font-size: 14px;
             margin-bottom: 15px;
-            font-size: 1.5rem;
         }
-
-        /* Team Section */
-        .team {
-            padding: 60px 0;
+        
+        /* Pressure Chart Section */
+        .chart-section {
             background-color: white;
         }
-
-        .team h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.2rem;
-            color: #0066cc;
+        
+        .chart-container {
+            overflow-x: auto;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
         }
-
-        .team-grid {
+        
+        .pressure-chart {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        
+        .pressure-chart th {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .pressure-chart tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .pressure-chart td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* About Section */
+        .about-section {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Features Section */
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .team-member img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 5px solid #f0f5ff;
-        }
-
-        .team-member h3 {
-            margin-bottom: 5px;
-            font-size: 1.4rem;
-        }
-
-        .team-member p {
-            color: #0066cc;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .social-links a {
-            margin: 0 8px;
-            color: #333;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #0066cc;
-        }
-
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(to right, #0066cc, #0088ee);
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .cta h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
+        
+        .feature-card {
             background-color: white;
-            color: #0066cc;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
-        .btn:hover {
-            background-color: #f0f5ff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
         }
-
-        /* Footer */
-        footer {
-            background-color: #222;
-            color: #ddd;
-            padding: 60px 0 30px;
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-about h3,
-        .footer-links h3,
-        .footer-contact h3 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .footer-about p {
+        
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary);
             margin-bottom: 20px;
         }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-contact p {
+        
+        .feature-title {
+            font-size: 20px;
             margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Services Section */
+        .services-section {
+            background-color: #f8f9fa;
+        }
+        
+        .services-container {
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .services-title {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            position: relative;
+            font-size: 24px;
+            color: var(--dark);
+            border-bottom: 1px solid #eee;
+        }
+        
+        .services-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .service-category {
+            margin-bottom: 30px;
+        }
+        
+        .service-category h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 18px;
             display: flex;
             align-items: center;
         }
-
-        .footer-contact i {
+        
+        .service-category h3 i {
             margin-right: 10px;
-            color: #0066cc;
         }
-
+        
+        .service-list {
+            list-style: none;
+        }
+        
+        .service-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .service-list li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(10, 35, 66, 0.9), rgba(10, 35, 66, 0.9)), url('/api/placeholder/1200/400') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-contact i {
+            color: var(--primary);
+        }
+        
         .copyright {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #444;
-            font-size: 0.9rem;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
         }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
-
-        .animated {
-            animation: fadeIn 1s ease-out;
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
         }
-
-        /* Responsive Design */
+        
+        .back-to-top:hover {
+            background-color: #0088c7;
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Styles */
         @media (max-width: 992px) {
-            .about-grid,
-            .footer-grid {
+            .about-content {
                 grid-template-columns: 1fr;
             }
-
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
+            
             .about-image {
                 order: -1;
             }
-
-            .navbar {
-                position: relative;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-                font-size: 1.5rem;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                transform: translateY(-150%);
-                transition: transform 0.3s;
-                opacity: 0;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
-
+        
         @media (max-width: 768px) {
-            .values-grid {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 80px 20px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 99;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+                z-index: 100;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 28px;
+            }
+            
+            .services-grid {
                 grid-template-columns: 1fr;
             }
-
-            .hero h1 {
-                font-size: 2.2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .top-bar .container {
+                flex-direction: column;
+                gap: 10px;
             }
-
-            .about-text h2,
-            .mission-values h2,
-            .team h2,
-            .cta h2 {
-                font-size: 1.8rem;
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .about-text h2 {
+                font-size: 28px;
+            }
+            
+            .feature-card {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Header -->
     <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <img src="/api/placeholder/150/60" alt="Avani Sales Logo">
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:+919425479271"><i class="fas fa-phone"></i> +91 9425479271</a>
+                    <a href="mailto:info@avanisales.in"><i class="fas fa-envelope"></i> info@avanisales.in</a>
                 </div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#" class="active">About Us</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
-            </nav>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="/api/placeholder/150/50" alt="Avani Sales Logo">
+                    </a>
+                </div>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav class="nav-menu">
+                    <div class="close-menu mobile-toggle">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#services">Services</a>
+                    <a href="#chart">Pressure Chart</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
-            <h1 class="animated">About Avani Sales</h1>
-            <p class="animated">Leading industrial products supplier with over 25 years of excellence in service.</p>
+            <div class="hero-content">
+                <h1>Quality Refrigerant Gas & Spare Parts</h1>
+                <p>We are the ultimate destination for top-quality spare parts purchase. As one of the best wholesale suppliers for your spare parts needs, we provide the best spare parts that you are looking for.</p>
+                <div class="btn-group">
+                    <a href="#products" class="btn">Explore Products</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- About Content Section -->
-    <section class="about-content">
+    <!-- Products Section -->
+    <section class="section" id="products">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-text animated">
-                    <h2>Our Story</h2>
-                    <p>Established in 1995, Avani Sales has grown from a small trading company to one of India's premier industrial products suppliers. With our headquarters in Ahmedabad, Gujarat, we've built a reputation for reliability, quality, and customer service excellence.</p>
-                    <p>Our team of skilled professionals works tirelessly to deliver the best solutions for businesses across various industrial sectors. We pride ourselves on understanding our clients' unique needs and providing tailored products and services that exceed expectations.</p>
-                    <p>Over the years, we've partnered with leading manufacturers and brands to ensure our customers receive only the finest quality products. Our commitment to innovation and continuous improvement has helped us stay ahead in this competitive industry.</p>
+            <div class="section-header">
+                <h2>Our Refrigerant Products</h2>
+                <p>We offer a wide range of refrigerant gas products to meet all your requirements. Our products are of the highest quality and comply with industry standards.</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="R-22 Refrigerant Gas">
+                    </div>
+                    <div class="product-info">
+                        <h3>R-22 Refrigerant Gas</h3>
+                        <p>Commonly used in air conditioning systems and medium-temperature refrigeration applications.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
                 </div>
-                <div class="about-image animated">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="R-134A Refrigerant Gas">
+                    </div>
+                    <div class="product-info">
+                        <h3>R-134A Refrigerant Gas</h3>
+                        <p>Used in domestic refrigeration, automobile air conditioning, and commercial cooling applications.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="R-410A Refrigerant Gas">
+                    </div>
+                    <div class="product-info">
+                        <h3>R-410A Refrigerant Gas</h3>
+                        <p>Developed as a replacement for R-22 in residential and commercial air conditioning systems.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="R-32 Refrigerant Gas">
+                    </div>
+                    <div class="product-info">
+                        <h3>R-32 Refrigerant Gas</h3>
+                        <p>Used in air conditioning applications with lower global warming potential.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Products & Services</h2>
+                <p>We offer a comprehensive range of products and services to meet all your HVAC and refrigeration needs.</p>
+            </div>
+            <div class="services-container">
+                <h3 class="services-title">Our Complete Product Range</h3>
+                <div class="services-grid">
+                    <div class="service-category">
+                        <h3><i class="fas fa-snowflake"></i> AC & Cooling</h3>
+                        <ul class="service-list">
+                            <li>AC Spares</li>
+                            <li>Water Chiller Spare</li>
+                            <li>Refrigerant Gas</li>
+                            <li>Water Cooler Spares</li>
+                        </ul>
+                    </div>
+                    <div class="service-category">
+                        <h3><i class="fas fa-utensils"></i> Kitchen Appliances</h3>
+                        <ul class="service-list">
+                            <li>Fridge Spares</li>
+                            <li>Deep Freezer Spares</li>
+                            <li>Washing Machine Spares</li>
+                            <li>Microwave Spares</li>
+                        </ul>
+                    </div>
+                    <div class="service-category">
+                        <h3><i class="fas fa-tools"></i> Equipment & Others</h3>
+                        <ul class="service-list">
+                            <li>Gas Handling Equipments</li>
+                            <li>R.O Spares</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pressure Chart Section -->
+    <section class="section chart-section" id="chart">
+        <div class="container">
+            <div class="section-header">
+                <h2>Refrigerant Pressure Chart</h2>
+                <p>Reference guide for refrigerant standing, suction, discharge pressures and boiling temperatures.</p>
+            </div>
+            <div class="chart-container">
+                <table class="pressure-chart">
+                    <thead>
+                        <tr>
+                            <th>Refrigerant Name</th>
+                            <th>Standing Pressure</th>
+                            <th>Suction Pressure</th>
+                            <th>Discharge Pressure</th>
+                            <th>Boiling Temp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R-22</td>
+                            <td>150-155 psi</td>
+                            <td>60-70 psi</td>
+                            <td>250-300 psi</td>
+                            <td>-40.8 C</td>
+                        </tr>
+                        <tr>
+                            <td>R-410a</td>
+                            <td>225-230 psi</td>
+                            <td>120-130 psi</td>
+                            <td>450-500 psi</td>
+                            <td>-51.4 C</td>
+                        </tr>
+                        <tr>
+                            <td>R-134a</td>
+                            <td>85-95 psi</td>
+                            <td>12-15 psi</td>
+                            <td>-</td>
+                            <td>-26.2 C</td>
+                        </tr>
+                        <tr>
+                            <td>R-600a</td>
+                            <td>40-50 psi</td>
+                            <td>Below 0-1 psi</td>
+                            <td>-</td>
+                            <td>-11.7 C</td>
+                        </tr>
+                        <tr>
+                            <td>R-32</td>
+                            <td>240-245 psi</td>
+                            <td>110-115 psi</td>
+                            <td>-</td>
+                            <td>-52.0 C</td>
+                        </tr>
+                        <tr>
+                            <td>R-290</td>
+                            <td>125-130 psi</td>
+                            <td>65-70 psi</td>
+                            <td>275-300 psi</td>
+                            <td>-42.1 C</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Avani Sales</h2>
+                    <p>We, at Avani Sales, can provide you with the best in quality Refrigerant Spares. We are the ultimate destination for top-quality spare parts purchase. We are regarded as one of the best wholesale suppliers for your spare parts needs.</p>
+                    <p>We understand the need for quality electronic spare parts for the various appliances used in the residential or commercial facilities in India. That is why we are here to fulfil that need.</p>
+                    <a href="#contact" class="btn">Contact Us</a>
+                </div>
+                <div class="about-image">
                     <img src="/api/placeholder/600/400" alt="Avani Sales Office">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission and Values Section -->
-    <section class="mission-values">
-        <div class="container">
-            <h2 class="animated">Our Values & Mission</h2>
-            <div class="values-grid">
-                <div class="value-card animated">
-                    <div class="value-icon">★</div>
-                    <h3>Quality Excellence</h3>
-                    <p>We are committed to providing only the highest quality products that meet international standards and exceed customer expectations.</p>
+<!-- Features Section -->
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Why Choose Us</h2>
+            <p>Discover the advantages of partnering with Avani Sales for all your refrigeration needs.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
                 </div>
-                <div class="value-card animated">
-                    <div class="value-icon">♻</div>
-                    <h3>Integrity & Trust</h3>
-                    <p>We conduct our business with the utmost integrity, building trust with our customers, suppliers, and team members through transparent practices.</p>
+                <h3 class="feature-title">Quality Products</h3>
+                <p>We source only the highest quality refrigerant gases and spare parts that meet international standards.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
                 </div>
-                <div class="value-card animated">
-                    <div class="value-icon">⚡</div>
-                    <h3>Innovation</h3>
-                    <p>We continuously seek new and better solutions, embracing technological advancements to improve our products and services.</p>
+                <h3 class="feature-title">Fast Delivery</h3>
+                <p>Our efficient logistics network ensures timely delivery of products to your doorstep.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
                 </div>
-                <div class="value-card animated">
-                    <div class="value-icon">🤝</div>
-                    <h3>Customer Focus</h3>
-                    <p>Our customers are at the heart of everything we do. We listen, understand, and deliver solutions tailored to their specific needs.</p>
+                <h3 class="feature-title">Technical Support</h3>
+                <p>Our team of experts is always available to provide technical assistance and solutions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tag"></i>
                 </div>
-                <div class="value-card animated">
-                    <div class="value-icon">🔄</div>
-                    <h3>Sustainability</h3>
-                    <p>We are committed to environmentally responsible practices throughout our operations and supply chain.</p>
+                <h3 class="feature-title">Competitive Pricing</h3>
+                <p>We offer the best market rates without compromising on quality or service.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-recycle"></i>
                 </div>
-                <div class="value-card animated">
-                    <div class="value-icon">🌏</div>
-                    <h3>Global Perspective</h3>
-                    <p>We maintain a global outlook, sourcing the best products worldwide while understanding local market needs.</p>
+                <h3 class="feature-title">Environmentally Conscious</h3>
+                <p>We promote eco-friendly refrigerants and proper handling practices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
                 </div>
+                <h3 class="feature-title">Reliable Partnership</h3>
+                <p>We build long-term relationships with our clients based on trust and mutual growth.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Team Section -->
-    <section class="team">
-        <div class="container">
-            <h2 class="animated">Our Leadership Team</h2>
-            <div class="team-grid">
-                <!-- <div class="team-member animated">
-                    <img src="/api/placeholder/200/200" alt="Team Member">
-                    <h3>Sunil Sharma</h3>
-                    <p>Operations Director</p>
-                    <div class="social-links">
-                        <a href="#">L</a>
-                        <a href="#">T</a>
-                        <a href="#">E</a>
+<!-- CTA Section -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Order Refrigerant Gas?</h2>
+            <p>Contact us today for the best quality refrigerant gases and spare parts at competitive prices.</p>
+            <div class="btn-group">
+                <a href="tel:+919425479271" class="btn">Call Now</a>
+                <a href="#contact" class="btn btn-secondary">Send Inquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us for any inquiries or to place an order.</p>
+        </div>
+        <div class="contact-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div class="contact-form" style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                <form action="#" method="POST">
+                    <div style="margin-bottom: 20px;">
+                        <label for="name" style="display: block; margin-bottom: 5px; font-weight: 500;">Your Name</label>
+                        <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
                     </div>
-                </div> -->
-                <div class="team-member animated">
-                    <img src="/api/placeholder/200/200" alt="Team Member">
-                    <h3>Amit Joshi</h3>
-                    <p>Founder & CEO</p>
-                </div>
-                <!-- <div class="team-member animated">
-                    <img src="/api/placeholder/200/200" alt="Team Member">
-                    <h3>Priya Desai</h3>
-                    <p>Sales Manager</p>
-                    <div class="social-links">
-                        <a href="#">L</a>
-                        <a href="#">T</a>
-                        <a href="#">E</a>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2 class="animated">Ready to Partner With Us?</h2>
-            <p class="animated">Discover how Avani Sales can help your business with our premium industrial products and exceptional service.</p>
-            <a href="#" class="btn animated">Contact Us Today</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h3>About Avani Sales</h3>
-                    <p>Avani Sales is a leading supplier of industrial products with over 25 years of experience serving businesses across India with quality and reliability.</p>
-                    <div class="social-links">
-                        <a href="#">F</a>
-                        <a href="#">T</a>
-                        <a href="#">I</a>
-                        <a href="#">L</a>
+                    <div style="margin-bottom: 20px;">
+                        <label for="email" style="display: block; margin-bottom: 5px; font-weight: 500;">Email Address</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
                     </div>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Products</h3>
-                    <ul>
-                        <li><a href="#">Industrial Valves</a></li>
-                        <li><a href="#">Pumps & Systems</a></li>
-                        <li><a href="#">Safety Equipment</a></li>
-                        <li><a href="#">Electrical Products</a></li>
-                        <li><a href="#">Mechanical Tools</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Contact Us</h3>
-                    <p>📍 123 Industrial Area, Ahmedabad, Gujarat, India - 380015</p>
-                    <p>📞 +91 79 1234 5678</p>
-                    <p>📧 info@avanisales.in</p>
-                </div>
+                    <div style="margin-bottom: 20px;">
+                        <label for="phone" style="display: block; margin-bottom: 5px; font-weight: 500;">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label for="message" style="display: block; margin-bottom: 5px; font-weight: 500;">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Avani Sales. All Rights Reserved.</p>
+            <div class="contact-info" style="background-color: var(--dark); color: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                <h3 style="margin-bottom: 20px; font-size: 24px;">Get In Touch</h3>
+                <div style="margin-bottom: 30px;">
+                    <p style="margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--primary);"></i> 123 Refrigerant Street, Indore, Madhya Pradesh 452001, India</p>
+                    <p style="margin-bottom: 10px;"><i class="fas fa-phone" style="margin-right: 10px; color: var(--primary);"></i> +91 9425479271</p>
+                    <p style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px; color: var(--primary);"></i> info@avanisales.in</p>
+                    <p style="margin-bottom: 10px;"><i class="fas fa-clock" style="margin-right: 10px; color: var(--primary);"></i> Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                </div>
+                <h3 style="margin-bottom: 20px; font-size: 20px;">Follow Us</h3>
+                <div class="social-links" style="display: flex; gap: 15px;">
+                    <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); transition: all 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); transition: all 0.3s ease;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); transition: all 0.3s ease;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); transition: all 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">Avani Sales is a leading supplier of refrigerant gases and spare parts in India, committed to providing high-quality products and exceptional service.</p>
+                <div class="social-links" style="display: flex; gap: 10px;">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#chart">Pressure Chart</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">R-22 Refrigerant Gas</a></li>
+                    <li><a href="#">R-134A Refrigerant Gas</a></li>
+                    <li><a href="#">R-410A Refrigerant Gas</a></li>
+                    <li><a href="#">R-32 Refrigerant Gas</a></li>
+                    <li><a href="#">Gas Handling Equipment</a></li>
+                    <li><a href="#">AC Spare Parts</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Refrigerant Street, Indore, Madhya Pradesh 452001, India</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9425479271</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@avanisales.in</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Monday - Saturday: 9:00 AM - 6:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <p>© 2025 Avani Sales. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> for quality refrigerant solutions</p>
+        </div>
+    </div>
+</footer>
 
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.navbar')) {
-                    navLinks.classList.remove('active');
-                }
-            });
-
-            // Scroll animation
-            const animatedElements = document.querySelectorAll('.animated');
-            
-            function checkScroll() {
-                animatedElements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.2;
-                    
-                    if (elementPosition < screenPosition) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-            
-            // Initial check
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            });
-            
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
-            
-            // Initial check (for elements already in view)
-            checkScroll();
+<!-- JavaScript -->
+<script>
+    // Mobile Menu Toggle
+    const mobileToggle = document.querySelectorAll('.mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    mobileToggle.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-    </script>
+    });
+    
+    // Back to Top Button
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('active');
+        } else {
+            backToTopButton.classList.remove('active');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Smooth Scrolling for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
